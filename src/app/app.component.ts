@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AdItem } from './ad-banner/ad-item';
+import { AdService } from './ad-banner/ad.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng7-adc';
+  ads: AdItem[];
+
+  constructor(private adService: AdService) { }
+
+  ngOnInit() {
+    this.ads = this.adService.getAds();
+  }
 }
